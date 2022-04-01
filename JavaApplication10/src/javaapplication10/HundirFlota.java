@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package es.iespuertodelacruz.ay.model;
+package javaapplication10;
 
+import java.util.Random;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -39,11 +40,18 @@ public class HundirFlota{
     
     public static void main(String[] args) {
         
-        Escenario escenario1 = new Escenario(1, 6);
-        Barco barco1 = new Barco("b1", 1, escenario1);
+        Escenario escenario1 = new Escenario(1, 4);
+        
+        Barco barco1 = new Barco("b1", 3, escenario1);
+        
+        Barco barco2 = new Barco("b2", 3, escenario1);
+        
+
+        escenario1.addBarco(barco1);
+        escenario1.addBarco(barco2);
         
         System.out.println(escenario1);
-        
+
         
     }
     
