@@ -65,6 +65,10 @@ public class main {
             System.out.println(escenario1);
             int x = rnd.nextInt(escenario1.escenario.length);
             int y = rnd.nextInt(escenario1.escenario.length);
+            while(escenario1.yaAtacada(x, y)){
+                x = rnd.nextInt(escenario1.escenario.length);
+                y = rnd.nextInt(escenario1.escenario.length);          
+            }
             System.out.println(escenario1.elegirCasilla(x, y));
             System.out.println("La IA ha atacado la posicion: " + x + ", " + y);
             contador ++;

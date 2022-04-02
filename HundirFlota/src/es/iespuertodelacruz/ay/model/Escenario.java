@@ -6,6 +6,7 @@
 package es.iespuertodelacruz.ay.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import javafx.util.Pair;
 
@@ -18,10 +19,12 @@ public class Escenario {
     int id;
     ArrayList<Barco> barcos;
     String escenario[][];
+    ArrayList<String> historialPosicionesAtacadas;
 
     public Escenario(int id, int size) {
         this.id = id;
         this.barcos = new ArrayList<>();
+        this.historialPosicionesAtacadas = new ArrayList<>();
         this.escenario = new String[size][size];
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
@@ -102,6 +105,16 @@ public class Escenario {
         return respuesta;
     }
     
+    public boolean yaAtacada(int x, int y){
+        
+        boolean respuesta = false;
+        if(historialPosicionesAtacadas.contains("" + x + " " + y)){
+            respuesta = true;
+            
+        }
+        return respuesta;
+    }
+    
     /**
      * Metodo para elegir la casilla a atacar
      * @param x posicion x a atacar
@@ -111,6 +124,7 @@ public class Escenario {
      */
     public String elegirCasilla(int x, int y) {
 
+        historialPosicionesAtacadas.add("" + x + " " + y);
         String respuesta = "";
         if (!isOcupado(x, y)) {
             return "AGUA!";
