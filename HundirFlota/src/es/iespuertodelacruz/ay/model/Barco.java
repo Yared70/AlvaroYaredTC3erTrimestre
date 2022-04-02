@@ -1,33 +1,64 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package es.iespuertodelacruz.ay.model;
 
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+import javafx.util.Pair;
+
 /**
  *
- * @author yared
+ * @author Álvaro y Yared
  */
 public class Barco {
-    
-    
-    String id;
-    int size;
-    Escenario escenario;
+    String nombre;
+    int size; // 2 o 3
+    ArrayList<Pair<String, Estado>> partes; // Array de partes del barco, cada parte tiene una casilla del tablero asignada, y un estado.
+    Estado estado; // Estado del barco
 
-    public Barco(String id, int size, Escenario escenario) {
-        this.id = id;
+    /**
+     * Constructor por defecto
+     */
+    public Barco(){}
+    
+    /**
+     * Constructor con dos parametros
+     * @param size tamaño del barco
+     * @param nombre Nombre del barco
+     */
+    public Barco(int size, String nombre) {
         this.size = size;
-        this.escenario = escenario;
-        
+        this.nombre = nombre;
+        this.partes = new ArrayList<>(size);
+        this.estado = Estado.INTACTO;
+    }
+    
+    /**
+     * Enum de los posibles estados del barco y de cada una de sus partes
+     */
+    enum Estado{INTACTO, TOCADO, HUNDIDO}
+    
+    /**
+     * Metodo toString
+     * @return devuelve la forma de expresar el barco en cadena de texto
+     */
+    @Override
+    public String toString(){
+        String respuesta = "";
+        respuesta = partes.stream().map((parte) -> parte.getKey() + ": " + parte.getValue() + "\n").reduce(respuesta, String::concat);
+        return respuesta;
     }
 
-    public String getId() {
-        return id;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public int getSize() {
@@ -38,14 +69,81 @@ public class Barco {
         this.size = size;
     }
 
-    public Escenario getEscenario() {
-        return escenario;
+    public ArrayList<Pair<String, Estado>> getPartes() {
+        return partes;
     }
 
-    public void setEscenario(Escenario escenario) {
-        this.escenario = escenario;
+    public void setPartes(ArrayList<Pair<String, Estado>> partes) {
+        this.partes = partes;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
     
     
     
+    /**
+     * Método que coloca el barco en una posicion aleatoria del tablero
+     */
+    public void colocarBarco(){
+        partes.clear();
+        int x; // Posteriormente será la coordenada x de la casilla
+        int y; // Posteriormente será la coordenada y de la casilla
+        int ladoTablero = 4; // Posteriormente el dato lo tendremos en la clase Escenario
+        Random rnd = new Random();
+        x = rnd.nextInt(4);
+        y = rnd.nextInt(4);
+        
+        partes.add(new Pair("" + x + " " + y, Estado.INTACTO));
+        
+        boolean colocado = false;
+        
+        do{
+            int direccion = rnd.nextInt(4);
+            switch(direccion){
+                case 0:
+                    if(x + (this.size-1) < ladoTablero   /*Y x+1 no está ocupada*/){
+                        for(int j = 0; j < this.size - 1; j++){
+                            x++;
+                            partes.add(new Pair("" + x + " " + y, Estado.INTACTO));
+                        }
+                        colocado = true;
+                    }
+                    break;
+                case 1:
+                    if(y + (this.size-1) < ladoTablero){
+                        for(int j = 0; j < this.size - 1; j++){
+                            y++;
+                            partes.add(new Pair("" + x + " " + y, Estado.INTACTO));
+                        }
+                        colocado = true;
+                    }
+                    break;
+                case 2: 
+                    if(x >= this.size-1){
+                        for(int j = 0; j < this.size - 1; j++){
+                            x--;
+                            partes.add(new Pair("" + x + " " + y, Estado.INTACTO));
+                        }
+                        colocado = true;
+                    }
+                    break;
+                case 3: 
+                    if(y >= this.size-1){
+                        for(int j = 0; j <  this.size - 1; j++){
+                            y--;
+                            partes.add(new Pair("" + x + " " + y, Estado.INTACTO));
+                        }
+                        colocado = true;
+                    }
+                    break;
+            }
+        }while(!colocado);
+    }
 }
+

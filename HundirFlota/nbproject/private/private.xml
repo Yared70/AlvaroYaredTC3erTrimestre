@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="Tema7-Interfaces_graficas"/>
+        <group name="AlvaroYaredTC3erTrimestre">
+            <file>file:/home/alumno/Escritorio/AlvaroYaredTC3erTrimestre/HundirFlota/src/es/iespuertodelacruz/ay/model/HundirFlota.java</file>
+            <file>file:/home/alumno/Escritorio/AlvaroYaredTC3erTrimestre/HundirFlota/src/es/iespuertodelacruz/ay/model/Barco.java</file>
+        </group>
+        <group name="PracticasDossier">
+            <file>file:/run/media/yared/Yared%20SSD/1-DAM/github/ProyectoPro/AlvaroYaredTC3erTrimestre/HundirFlota/src/es/iespuertodelacruz/ay/model/main.java</file>
+            <file>file:/run/media/yared/Yared%20SSD/1-DAM/github/ProyectoPro/AlvaroYaredTC3erTrimestre/HundirFlota/src/es/iespuertodelacruz/ay/model/Barco.java</file>
+            <file>file:/run/media/yared/Yared%20SSD/1-DAM/github/ProyectoPro/AlvaroYaredTC3erTrimestre/HundirFlota/src/es/iespuertodelacruz/ay/model/Juego.java</file>
+            <file>file:/run/media/yared/Yared%20SSD/1-DAM/github/ProyectoPro/AlvaroYaredTC3erTrimestre/HundirFlota/src/es/iespuertodelacruz/ay/model/Escenario.java</file>
+        </group>
     </open-files>
 </project-private>

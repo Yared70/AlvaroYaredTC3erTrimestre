@@ -15,9 +15,8 @@ import javafx.stage.Stage;
  *
  * @author Yared
  */
-//public class HundirFlota extends Application {
-public class HundirFlota{    
-    /*
+public class HundirFlota extends Application {
+    
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/es/iespuertodelacruz/ay/view/FXMLDocument.fxml"));
@@ -31,20 +30,10 @@ public class HundirFlota{
     /**
      * @param args the command line arguments
      */
-    /*
     public static void main(String[] args) {
         launch(args);
     }
-    */
     
-    public static void main(String[] args) {
-        
-        Escenario escenario1 = new Escenario(1, 6);
-        Barco barco1 = new Barco("b1", 1, escenario1);
-        
-        System.out.println(escenario1);
-        
-        
-    }
+    
     
 }
