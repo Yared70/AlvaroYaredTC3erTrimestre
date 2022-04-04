@@ -5,6 +5,9 @@
  */
 package es.iespuertodelacruz.ay.controller;
 
+import es.iespuertodelacruz.ay.model.Barco;
+import es.iespuertodelacruz.ay.model.Escenario;
+import es.iespuertodelacruz.ay.model.Jugador;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -34,9 +37,19 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextArea pruebas;
     
+    Escenario escenario;
+    
+    Barco barco;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        barco = new Barco(3, "A");
+        barco.colocarBarco();
+        escenario = new Escenario(1, 4, new Jugador("Jugador1"));
+        escenario.posicionValida(barco);
+        System.out.println(escenario);
+        
     }    
 
     private void seleccionarCasilla(MouseEvent event) {
@@ -46,6 +59,8 @@ public class FXMLDocumentController implements Initializable {
         System.out.println(boton.getText());*/
         
     }
+    
+    
 
     @FXML
     private void seleccionarCasilla(ActionEvent event) {
@@ -55,6 +70,11 @@ public class FXMLDocumentController implements Initializable {
         int x = (GridPane.getRowIndex(boton) == null) ? 0:GridPane.getRowIndex (boton);
         int y = (GridPane.getColumnIndex(boton) == null) ? 0:GridPane.getColumnIndex (boton);
         System.out.println(x + ", " + y);
+        
+        
+        System.out.println(escenario.elegirCasilla(x, y));
+        
+        
     }
     
 }
