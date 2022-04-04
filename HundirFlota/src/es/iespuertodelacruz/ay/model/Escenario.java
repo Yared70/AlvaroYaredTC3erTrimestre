@@ -20,8 +20,10 @@ public class Escenario {
     ArrayList<Barco> barcos;
     String escenario[][];
     ArrayList<String> historialPosicionesAtacadas;
+    Jugador jugador;
+    InteligenciaArtificial ia;
 
-    public Escenario(int id, int size) {
+    public Escenario(int id, int size, Jugador jugador) {
         this.id = id;
         this.barcos = new ArrayList<>();
         this.historialPosicionesAtacadas = new ArrayList<>();
@@ -32,6 +34,23 @@ public class Escenario {
             }
 
         }
+        this.ia = null;
+        this.jugador = jugador;
+    }
+    
+    public Escenario(int id, int size, InteligenciaArtificial ia) {
+        this.id = id;
+        this.barcos = new ArrayList<>();
+        this.historialPosicionesAtacadas = new ArrayList<>();
+        this.escenario = new String[size][size];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                escenario[i][j] = "~";
+            }
+
+        }
+        this.ia = ia;
+        this.jugador = null;
     }
 
     public int getId() {
