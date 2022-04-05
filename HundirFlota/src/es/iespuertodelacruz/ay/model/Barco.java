@@ -40,7 +40,7 @@ public class Barco {
     /**
      * Enum de los posibles estados del barco y de cada una de sus partes
      */
-    enum Estado{INTACTO, TOCADO, HUNDIDO}
+    public enum Estado{INTACTO, TOCADO, HUNDIDO}
     
     /**
      * Metodo toString
