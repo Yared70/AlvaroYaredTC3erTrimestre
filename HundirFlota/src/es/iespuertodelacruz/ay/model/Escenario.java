@@ -76,6 +76,22 @@ public class Escenario {
     public void setEscenario(String[][] escenario) {
         this.escenario = escenario;
     }
+    
+    public Barco getBarco(int x, int y){
+        if(isOcupado(x, y)){
+            for (Barco barco : barcos) {
+                Iterator<Pair<String, Barco.Estado>> iterator = barco.partes.iterator();
+                while (iterator.hasNext()) {
+                    String strCoordenadas = iterator.next().getKey();
+                    String[] split = strCoordenadas.split(" ");
+                    if(Integer.parseInt(split[0]) == x && Integer.parseInt(split[1]) == y){
+                        return barco;
+                    }
+                }
+            }
+        }
+        return null;
+    }
 
     @Override
     public String toString() {

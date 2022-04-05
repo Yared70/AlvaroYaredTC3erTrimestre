@@ -93,7 +93,7 @@ public class InteligenciaArtificial {
         }
         respuesta = "La IA ha atacado la posicion " + x + ", " + y + "\n"
                 + escenarioJugador.elegirCasilla(x, y);
-
+        historialPosicionesAtacadas.add(x + " " + y);
         return respuesta;
     }
 

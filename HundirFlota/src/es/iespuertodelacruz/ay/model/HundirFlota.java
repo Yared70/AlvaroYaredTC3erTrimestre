@@ -5,6 +5,8 @@
  */
 package es.iespuertodelacruz.ay.model;
 
+import java.io.IOException;
+import java.net.URL;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,14 +19,30 @@ import javafx.stage.Stage;
  */
 public class HundirFlota extends Application {
     
+    private static Scene scene;
+    
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/es/iespuertodelacruz/ay/view/FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/es/iespuertodelacruz/ay/view/facil.fxml"));
         
-        Scene scene = new Scene(root);
+        //scene = new Scene(root);
+        scene = new Scene(loadFXML("/es/iespuertodelacruz/ay/view/inicio"));
         
         stage.setScene(scene);
         stage.show();
+    }
+    
+    public static void setRoot(String fxml) throws IOException {
+        scene.setRoot(loadFXML(fxml));
+    }
+
+    private static Parent loadFXML(String fxml) throws IOException {
+        
+        /*String strFxml = "/es/iespuertodelacruz/ay/view/" + fxml + ".fxml";
+        URL urlFxml = getClass().getClassLoader().getResource(strFxml);
+        new FXMLLoader(getClass().getResource(strFxml));*/
+        FXMLLoader fxmlLoader = new FXMLLoader(HundirFlota.class.getResource(fxml + ".fxml"));
+        return fxmlLoader.load();
     }
 
     /**
