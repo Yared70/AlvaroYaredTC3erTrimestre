@@ -13,22 +13,15 @@ import java.net.URL;
 import java.util.Iterator;
 import java.util.Objects;
 import java.util.ResourceBundle;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
 import javafx.util.Pair;
 
 /**
@@ -169,7 +162,7 @@ public class FXMLDocumentController implements Initializable {
         }
         boton.setDisable(true);
 
-        String respuestaIA = ia.atacardif1(escenarioJugador);
+        String respuestaIA = ia.atacardif2(escenarioJugador);
         System.out.println(respuestaIA);
         String[] splitIA = ia.getHistorialPosicionesAtacadas().get((ia.getHistorialPosicionesAtacadas().size())-1).split(" ");
         
@@ -185,8 +178,8 @@ public class FXMLDocumentController implements Initializable {
         }else{
             txaSalida.appendText("IA: TOCADO! y HUNDIDO!\n");
             xIA = (xIA == null)?0:xIA;
-            xIA = (yIA == null)?0:yIA;
-            Barco barcoHundido = escenarioJugador.getBarco(xIA, xIA);
+            yIA = (yIA == null)?0:yIA;
+            Barco barcoHundido = escenarioJugador.getBarco(xIA, yIA);
             Iterator<Pair<String, Barco.Estado>> iterator = barcoHundido.getPartes().iterator();
             while (iterator.hasNext()) {
 

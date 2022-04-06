@@ -6,6 +6,7 @@ package es.iespuertodelacruz.ay.model;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Stack;
 
 /**
  *
@@ -19,11 +20,13 @@ public class InteligenciaArtificial {
     String ultimaPosicionTocada;
     Escenario escenario;
     String mapaTocados[][];
+    Stack<String> nextPosiciones;
 
     public InteligenciaArtificial(int dificultad) {
         this.dificultad = dificultad;
         this.historialPosicionesAtacadas = new ArrayList<String>();
         this.posicionesAtacadasTocado = new ArrayList<String>();
+        this.nextPosiciones = new Stack<>();
         this.ultimaPosicionTocada = null;
         this.escenario = null;
         this.mapaTocados = null;
@@ -96,6 +99,57 @@ public class InteligenciaArtificial {
         historialPosicionesAtacadas.add(x + " " + y);
         return respuesta;
     }
+    
+    public String atacardif2(Escenario escenarioJugador){
+        Random rnd = new Random();
+        String respuesta = "";
+        String strEstado;
+        
+        if(nextPosiciones.isEmpty()){
+            int x, y;
+            do{
+                x = rnd.nextInt(escenarioJugador.escenario.length);
+                y = rnd.nextInt(escenarioJugador.escenario.length);
+            }while(escenarioJugador.yaAtacada(x, y) || ((x+y)%2) != 0);
+            System.out.println("PAR: " + (x+y)%2);
+            strEstado = escenarioJugador.elegirCasilla(x, y);
+            respuesta = "La IA ha atacado la posicion " + x + ", " + y + "\n"
+                + strEstado;
+            historialPosicionesAtacadas.add(x + " " + y);
+            
+            if(strEstado.equals("TOCADO!")){
+                if(x > 0 && !escenarioJugador.yaAtacada(x-1, y)){
+                    nextPosiciones.add((x-1) + " " + y);
+                }
+                if(x < escenarioJugador.escenario.length-1 && !escenarioJugador.yaAtacada(x+1, y)){
+                    nextPosiciones.add((x+1) + " " + y);
+                }
+                if(y > 0 &&!escenarioJugador.yaAtacada(x, y-1)){
+                    nextPosiciones.add(x + " " + (y-1));
+                }
+                if(y < escenarioJugador.escenario.length-1 && !escenarioJugador.yaAtacada(x, y+1)){
+                    nextPosiciones.add(x + " " + (y+1));
+                }
+            }else if(strEstado.contains("HUNDIDO!")){
+                nextPosiciones.clear();
+            }
+        }else{
+            String[] coordenadas = nextPosiciones.pop().split(" ");
+            int x = Integer.parseInt(coordenadas[0]);
+            int y = Integer.parseInt(coordenadas[1]);
+            strEstado = escenarioJugador.elegirCasilla(x, y);
+            respuesta = "La IA ha atacado la posicion " + x + ", " + y + "\n"
+                + strEstado;
+            historialPosicionesAtacadas.add(x + " " + y);
+        }
+        
+        return respuesta;
+        
+    }
+    
+    
+    
+    
 
     /*
     public String atacardif2(Escenario escenarioJugador) {
