@@ -7,8 +7,10 @@ package es.iespuertodelacruz.ay.controller;
 
 import es.iespuertodelacruz.ay.model.Barco;
 import es.iespuertodelacruz.ay.model.Escenario;
+import es.iespuertodelacruz.ay.model.HundirFlota;
 import es.iespuertodelacruz.ay.model.InteligenciaArtificial;
 import es.iespuertodelacruz.ay.model.Jugador;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.Objects;
@@ -44,10 +46,34 @@ public class FXMLDocumentController implements Initializable {
     private GridPane panelJugador;
     @FXML
     private TextArea txaSalida;
+    @FXML
+    private Button btnReiniciar;
+    @FXML
+    private Button btnCambiarDificultad;
+    @FXML
+    private Label label1;
+    @FXML
+    private Label label2;
+    @FXML
+    private Label label3;
+    @FXML
+    private Label label4;
+    @FXML
+    private Label label11;
+    @FXML
+    private Label label21;
+    @FXML
+    private Label label31;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        iniciarNuevoJuego();
+    }
+    
+    @FXML
+    public void iniciarNuevoJuego(){
+        reiniciarGrid();
         ia = new InteligenciaArtificial(1);
         escenarioIA = new Escenario(1, 4, ia);
         ia.setEscenario(escenarioIA);
@@ -91,9 +117,6 @@ public class FXMLDocumentController implements Initializable {
         colocarBarcoGrid(barco4);
         colocarBarcoGrid(barco5);
         colocarBarcoGrid(barco6);
-
-        System.out.println(escenarioIA);
-        System.out.println(escenarioJugador);
         
         txaSalida.setText("Leyenda:\n"
                 + "Los barcos del jugador se muestran como B1, B2 y B3.\n"
@@ -101,7 +124,23 @@ public class FXMLDocumentController implements Initializable {
                 + "A: Agua\n"
                 + "T: Tocado\n"
                 + "H: Hundido\n");
-
+    }
+    
+    @FXML
+    private void switchToFacil(ActionEvent event) throws IOException {
+        HundirFlota.setRoot("/es/iespuertodelacruz/ay/view/inicio");
+    }
+    
+    public void reiniciarGrid(){
+        for (Node node : panelJugador.getChildren()) {
+            Button boton = (Button) node;
+            boton.setText("  ");
+        }
+        for (Node node : panelIA.getChildren()) {
+            Button boton = (Button) node;
+            boton.setText("  ");
+            boton.setDisable(false);
+        }
     }
 
     private void colocarBarcoGrid(Barco barco) {
@@ -128,10 +167,8 @@ public class FXMLDocumentController implements Initializable {
         Button boton = (Button) event.getSource();
         int x = (GridPane.getRowIndex(boton) == null) ? 0 : GridPane.getRowIndex(boton);
         int y = (GridPane.getColumnIndex(boton) == null) ? 0 : GridPane.getColumnIndex(boton);
-        System.out.println(x + ", " + y);
 
         String respuestaJugador = escenarioIA.elegirCasilla(x, y);
-        System.out.println(respuestaJugador);
 
         if (respuestaJugador.equals("AGUA!")) {
             boton.setText("A");
@@ -142,7 +179,6 @@ public class FXMLDocumentController implements Initializable {
         } else {
             txaSalida.appendText(jugador.getNombre() + ": " + respuestaJugador + "\n");
             Barco barcoHundido = escenarioIA.getBarco(x, y);
-            System.out.println(barcoHundido);
             Iterator<Pair<String, Barco.Estado>> iterator = barcoHundido.getPartes().iterator();
             while (iterator.hasNext()) {
                 String strCoordenadas = iterator.next().getKey();
@@ -163,7 +199,6 @@ public class FXMLDocumentController implements Initializable {
         boton.setDisable(true);
 
         String respuestaIA = ia.atacardif2(escenarioJugador);
-        System.out.println(respuestaIA);
         String[] splitIA = ia.getHistorialPosicionesAtacadas().get((ia.getHistorialPosicionesAtacadas().size())-1).split(" ");
         
         Integer xIA = (Integer.parseInt(splitIA[0]) > 0) ? Integer.parseInt(splitIA[0]) : null;
@@ -201,9 +236,11 @@ public class FXMLDocumentController implements Initializable {
         if (escenarioIA.ganado()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Has ganado");
             alert.showAndWait();
+            iniciarNuevoJuego();
         }else if (escenarioJugador.ganado()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Has perdido");
             alert.showAndWait();
+            iniciarNuevoJuego();
         }
     }
     

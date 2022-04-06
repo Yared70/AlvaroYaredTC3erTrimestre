@@ -29,6 +29,8 @@ public class HundirFlota extends Application {
         scene = new Scene(loadFXML("/es/iespuertodelacruz/ay/view/inicio"));
         
         stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setTitle("Hundir la flota");
         stage.show();
     }
     

@@ -131,8 +131,6 @@ public class InteligenciaArtificial {
             nextPosiciones.clear();
             rellenarPila(escenarioJugador);
         }
-        
-        System.out.println(nextPosiciones);
         return respuesta;
         
     }
