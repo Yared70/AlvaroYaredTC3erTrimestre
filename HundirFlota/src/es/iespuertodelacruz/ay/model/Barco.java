@@ -16,7 +16,7 @@ import javafx.util.Pair;
  */
 public class Barco {
     String nombre;
-    int size; // 2 o 3
+    int size;
     ArrayList<Pair<String, Estado>> partes; // Array de partes del barco, cada parte tiene una casilla del tablero asignada, y un estado.
     Estado estado; // Estado del barco
 
@@ -97,15 +97,20 @@ public class Barco {
     
     /**
      * Método que coloca el barco en una posicion aleatoria del tablero
+     * @param escenario
      */
-    public void colocarBarco(){
+    public void colocarBarco(Escenario escenario){
         partes.clear();
-        int x; // Posteriormente será la coordenada x de la casilla
-        int y; // Posteriormente será la coordenada y de la casilla
-        int ladoTablero = 4; // Posteriormente el dato lo tendremos en la clase Escenario
+        int x;
+        int y;
+        int ladoTablero = escenario.escenario.length;
         Random rnd = new Random();
-        x = rnd.nextInt(4);
-        y = rnd.nextInt(4);
+        do{
+            x = rnd.nextInt(ladoTablero);
+            y = rnd.nextInt(ladoTablero);
+        }while( (x-size-1) < 0 && (y - size-1) < 0 && (x + size-1) > ladoTablero-1 && (y + size-1) > ladoTablero-1);
+        System.out.println(x + " " + y);
+        
         
         partes.add(new Pair("" + x + " " + y, Estado.INTACTO));
         
@@ -115,7 +120,7 @@ public class Barco {
             int direccion = rnd.nextInt(4);
             switch(direccion){
                 case 0:
-                    if(x + (this.size-1) < ladoTablero   /*Y x+1 no está ocupada*/){
+                    if(x + (this.size-1) < ladoTablero  ){
                         for(int j = 0; j < this.size - 1; j++){
                             x++;
                             partes.add(new Pair("" + x + " " + y, Estado.INTACTO));
