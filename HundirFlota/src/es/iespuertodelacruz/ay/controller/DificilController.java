@@ -29,9 +29,9 @@ import javafx.util.Pair;
 /**
  * FXML Controller class
  *
- * @author Álvaro Hernández Rocío
+ * @author Álvaro y Yared
  */
-public class MedioController implements Initializable {
+public class DificilController implements Initializable {
 
     @FXML
     private Label label;
@@ -65,10 +65,6 @@ public class MedioController implements Initializable {
     private Label label21;
     @FXML
     private Label label31;
-    @FXML
-    private Label label32;
-    @FXML
-    private Label label321;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -80,11 +76,11 @@ public class MedioController implements Initializable {
     public void iniciarNuevoJuego(){
         reiniciarGrid();
         ia = new InteligenciaArtificial(1);
-        escenarioIA = new Escenario(3, 5, ia);
+        escenarioIA = new Escenario(5, 6, ia);
         ia.setEscenario(escenarioIA);
 
         jugador = new Jugador("Jugador1");
-        escenarioJugador = new Escenario(4, 5, jugador);
+        escenarioJugador = new Escenario(5, 6, jugador);
         jugador.setEscenario(escenarioJugador);
 
         //Barcos de la IA
@@ -107,49 +103,64 @@ public class MedioController implements Initializable {
         } while (!escenarioIA.posicionValida(barco3));
         System.out.println(barco3);
         
-        Barco barco4 = new Barco(2, "D");
+        Barco barco4 = new Barco(3, "D");
         do {
             barco4.colocarBarco(escenarioIA);
         } while (!escenarioIA.posicionValida(barco4));
         System.out.println(barco4);
-
-        //Barcos del Jugador
-        Barco barco5 = new Barco(4, "B1");
+        
+        Barco barco5 = new Barco(4, "E");
         do {
-            barco5.colocarBarco(escenarioJugador);
-            System.out.println(barco5);
-        } while (!escenarioJugador.posicionValida(barco5));
+            barco5.colocarBarco(escenarioIA);
+        } while (!escenarioIA.posicionValida(barco5));
         System.out.println(barco5);
 
-        Barco barco6 = new Barco(3, "B2");
+        //Barcos del Jugador
+        Barco barco6 = new Barco(4, "B1");
         do {
             barco6.colocarBarco(escenarioJugador);
+            System.out.println(barco6);
         } while (!escenarioJugador.posicionValida(barco6));
         System.out.println(barco6);
 
-        Barco barco7 = new Barco(2, "B3");
+        Barco barco7 = new Barco(4, "B2");
         do {
             barco7.colocarBarco(escenarioJugador);
         } while (!escenarioJugador.posicionValida(barco7));
         System.out.println(barco7);
-        
-        Barco barco8 = new Barco(2, "B4");
+
+        Barco barco8 = new Barco(3, "B3");
         do {
             barco8.colocarBarco(escenarioJugador);
         } while (!escenarioJugador.posicionValida(barco8));
         System.out.println(barco8);
+        
+        Barco barco9 = new Barco(3, "B4");
+        do {
+            barco9.colocarBarco(escenarioJugador);
+        } while (!escenarioJugador.posicionValida(barco9));
+        System.out.println(barco9);
+        
+        Barco barco10 = new Barco(2, "B5");
+        do {
+            barco10.colocarBarco(escenarioJugador);
+        } while (!escenarioJugador.posicionValida(barco10));
+        System.out.println(barco10);
+        
 
         
-        colocarBarcoGrid(barco5);
         colocarBarcoGrid(barco6);
         colocarBarcoGrid(barco7);
         colocarBarcoGrid(barco8);
+        colocarBarcoGrid(barco9);
+        colocarBarcoGrid(barco10);
+        
         
         System.out.println(escenarioIA);
         System.out.println(escenarioJugador);
         
         txaSalida.setText("Leyenda:\n"
-                + "Los barcos del jugador se muestran como B1, B2, B3 y B4.\n"
+                + "Los barcos del jugador se muestran como B1, B2, B3, B4 y B5.\n"
                 + "Cada disparo se refleja por su resultado:\n"
                 + "A: Agua\n"
                 + "T: Tocado\n"
@@ -229,7 +240,7 @@ public class MedioController implements Initializable {
         }
         boton.setDisable(true);
 
-        String respuestaIA = ia.atacardif2(escenarioJugador);
+        String respuestaIA = ia.atacardif3(escenarioJugador);
         System.out.println(respuestaIA);
         String[] splitIA = ia.getHistorialPosicionesAtacadas().get((ia.getHistorialPosicionesAtacadas().size())-1).split(" ");
         

@@ -7,8 +7,9 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="596.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.iespuertodelacruz.ay.controller.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="596.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.iespuertodelacruz.ay.controller.FXMLDocumentController">
     <children>
         <Label fx:id="label" layoutX="84.0" layoutY="143.0" minHeight="16" minWidth="11.0" prefHeight="16.0" prefWidth="11.0" text="1" />
       <GridPane fx:id="panelIA" alignment="CENTER" layoutX="126.0" layoutY="124.0" prefHeight="200.0" prefWidth="200.0">
@@ -25,22 +26,70 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" text="  " textAlignment="CENTER" />
-            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" text="  " textAlignment="CENTER" GridPane.columnIndex="1" />
-            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" text="  " textAlignment="CENTER" GridPane.columnIndex="2" />
-            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" text="  " textAlignment="CENTER" GridPane.columnIndex="3" />
-            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" text="  " textAlignment="CENTER" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" text="  " textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" text="  " textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" text="  " textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" text="  " textAlignment="CENTER" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" text="  " textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" text="  " textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" text="  " textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" text="  " textAlignment="CENTER" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" text="  " textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" text="  " textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" text="  " textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.columnIndex="1">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.columnIndex="2">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.columnIndex="3">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.rowIndex="2">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.rowIndex="3">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#seleccionarCasilla" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="3">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
          </children>
       </GridPane>
       <Label layoutX="133.0" layoutY="91.0" text="A" />
@@ -62,22 +111,70 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" text="  " textAlignment="CENTER" />
-            <Button mnemonicParsing="false" text="  " textAlignment="CENTER" GridPane.columnIndex="1" />
-            <Button mnemonicParsing="false" text="  " textAlignment="CENTER" GridPane.columnIndex="2" />
-            <Button mnemonicParsing="false" text="  " textAlignment="CENTER" GridPane.columnIndex="3" />
-            <Button mnemonicParsing="false" text="  " textAlignment="CENTER" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" text="  " textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" text="  " textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" text="  " textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" text="  " textAlignment="CENTER" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" text="  " textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" text="  " textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" text="  " textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" text="  " textAlignment="CENTER" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" text="  " textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" text="  " textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" text="  " textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.columnIndex="1">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.columnIndex="2">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.columnIndex="3">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.rowIndex="2">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.rowIndex="3">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="32.0" text="  " textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="3">
+               <font>
+                  <Font size="12.0" />
+               </font></Button>
          </children>
       </GridPane>
       <Button fx:id="btnReiniciar" layoutX="371.0" layoutY="298.0" mnemonicParsing="false" onAction="#iniciarNuevoJuego" text="Reiniciar" />
