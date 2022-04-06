@@ -10,7 +10,7 @@ import java.util.Stack;
 
 /**
  *
- * @author yared
+ * @author yared y Alvaro
  */
 public class InteligenciaArtificial {
 

@@ -14,7 +14,7 @@ import javafx.scene.control.Button;
 /**
  * FXML Controller class
  *
- * @author Samuel González Machado
+ * @author Alvaro
  */
 public class InicioController {   
 
