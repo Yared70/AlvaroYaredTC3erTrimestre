@@ -123,10 +123,44 @@ public class InteligenciaArtificial {
             respuesta = "La IA ha atacado la posicion " + x + ", " + y + "\n"
                 + strEstado;
         }
-        historialPosicionesAtacadas.add(x + " " + y);
+        historialPosicionesAtacadas.add(x + " " + y);        
+        
         if(strEstado.equals("TOCADO!")){
+            /*String[] ultimaPosicion = posicionesAtacadasTocado.get(posicionesAtacadasTocado.size()-1).split(" ");
+            int ultimaX = Integer.parseInt(ultimaPosicion[0]);
+            int ultimaY = Integer.parseInt(ultimaPosicion[1]);
+            
+            if(x == ultimaX-1 && y == ultimaY){
+                if(x > 0){
+                    nextPosiciones.add((x-1) + " " + y);
+                }
+                if(ultimaX < escenarioJugador.escenario.length-1){
+                    nextPosiciones.add((ultimaX+1) + " " + y);
+                }
+            }else if(x == ultimaX+1 && y == ultimaY){
+                if(x < escenarioJugador.escenario.length-1){
+                    nextPosiciones.add((x+1) + " " + y);
+                }
+                if(ultimaX > 0){
+                    nextPosiciones.add((ultimaX-1) + " " + y);
+                }
+            } else if(y == ultimaY-1 && x == ultimaX){
+                if(y > 0){
+                    nextPosiciones.add(x + " " + (y-1));
+                }
+                if(ultimaY < escenarioJugador.escenario.length-1){
+                    nextPosiciones.add(x + " " + (ultimaY+1));
+                }
+            } else if(y == ultimaY+1 && x == ultimaX){
+                if(y < escenarioJugador.escenario.length-1)
+                    nextPosiciones.add(x + " " + (y+1));
+                if(y > 0)
+                    nextPosiciones.add(x + " " + (ultimaY-1));
+            }else{*/
+                addAdyacentes(x, y, escenarioJugador);
+            
             posicionesAtacadasTocado.add(x + " " + y);
-            addAdyacentes(x, y, escenarioJugador);
+            
         }else if(strEstado.contains("HUNDIDO!")){
             nextPosiciones.clear();
             rellenarPila(escenarioJugador);

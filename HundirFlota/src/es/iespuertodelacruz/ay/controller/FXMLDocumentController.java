@@ -46,24 +46,6 @@ public class FXMLDocumentController implements Initializable {
     private GridPane panelJugador;
     @FXML
     private TextArea txaSalida;
-    @FXML
-    private Button btnReiniciar;
-    @FXML
-    private Button btnCambiarDificultad;
-    @FXML
-    private Label label1;
-    @FXML
-    private Label label2;
-    @FXML
-    private Label label3;
-    @FXML
-    private Label label4;
-    @FXML
-    private Label label11;
-    @FXML
-    private Label label21;
-    @FXML
-    private Label label31;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -71,7 +53,6 @@ public class FXMLDocumentController implements Initializable {
         iniciarNuevoJuego();
     }
     
-    @FXML
     public void iniciarNuevoJuego(){
         reiniciarGrid();
         ia = new InteligenciaArtificial(1);
@@ -179,6 +160,7 @@ public class FXMLDocumentController implements Initializable {
         } else {
             txaSalida.appendText(jugador.getNombre() + ": " + respuestaJugador + "\n");
             Barco barcoHundido = escenarioIA.getBarco(x, y);
+            System.out.println(barcoHundido);
             Iterator<Pair<String, Barco.Estado>> iterator = barcoHundido.getPartes().iterator();
             while (iterator.hasNext()) {
                 String strCoordenadas = iterator.next().getKey();
@@ -199,6 +181,7 @@ public class FXMLDocumentController implements Initializable {
         boton.setDisable(true);
 
         String respuestaIA = ia.atacardif2(escenarioJugador);
+        System.out.println(respuestaIA);
         String[] splitIA = ia.getHistorialPosicionesAtacadas().get((ia.getHistorialPosicionesAtacadas().size())-1).split(" ");
         
         Integer xIA = (Integer.parseInt(splitIA[0]) > 0) ? Integer.parseInt(splitIA[0]) : null;
