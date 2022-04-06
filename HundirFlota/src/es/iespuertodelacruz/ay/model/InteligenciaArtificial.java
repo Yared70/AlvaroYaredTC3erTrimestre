@@ -126,37 +126,7 @@ public class InteligenciaArtificial {
         historialPosicionesAtacadas.add(x + " " + y);        
         
         if(strEstado.equals("TOCADO!")){
-            /*String[] ultimaPosicion = posicionesAtacadasTocado.get(posicionesAtacadasTocado.size()-1).split(" ");
-            int ultimaX = Integer.parseInt(ultimaPosicion[0]);
-            int ultimaY = Integer.parseInt(ultimaPosicion[1]);
-            
-            if(x == ultimaX-1 && y == ultimaY){
-                if(x > 0){
-                    nextPosiciones.add((x-1) + " " + y);
-                }
-                if(ultimaX < escenarioJugador.escenario.length-1){
-                    nextPosiciones.add((ultimaX+1) + " " + y);
-                }
-            }else if(x == ultimaX+1 && y == ultimaY){
-                if(x < escenarioJugador.escenario.length-1){
-                    nextPosiciones.add((x+1) + " " + y);
-                }
-                if(ultimaX > 0){
-                    nextPosiciones.add((ultimaX-1) + " " + y);
-                }
-            } else if(y == ultimaY-1 && x == ultimaX){
-                if(y > 0){
-                    nextPosiciones.add(x + " " + (y-1));
-                }
-                if(ultimaY < escenarioJugador.escenario.length-1){
-                    nextPosiciones.add(x + " " + (ultimaY+1));
-                }
-            } else if(y == ultimaY+1 && x == ultimaX){
-                if(y < escenarioJugador.escenario.length-1)
-                    nextPosiciones.add(x + " " + (y+1));
-                if(y > 0)
-                    nextPosiciones.add(x + " " + (ultimaY-1));
-            }else{*/
+           
                 addAdyacentes(x, y, escenarioJugador);
             
             posicionesAtacadasTocado.add(x + " " + y);
@@ -168,6 +138,95 @@ public class InteligenciaArtificial {
         return respuesta;
         
     }
+    
+    public String atacardif3(Escenario escenarioJugador) {
+        Random rnd = new Random();
+        String respuesta = "";
+        String strEstado;
+        boolean primerTocado = false;
+        int x, y;
+        if (!primerTocado) {
+            if (nextPosiciones.isEmpty()) {
+                do {
+                    x = rnd.nextInt(escenarioJugador.escenario.length);
+                    y = rnd.nextInt(escenarioJugador.escenario.length);
+                } while (escenarioJugador.yaAtacada(x, y) || ((x + y) % 2) != 0);
+                strEstado = escenarioJugador.elegirCasilla(x, y);
+                respuesta = "La IA ha atacado la posicion " + x + ", " + y + "\n"
+                        + strEstado;
+
+            } else {
+                String[] coordenadas = nextPosiciones.pop().split(" ");
+                x = Integer.parseInt(coordenadas[0]);
+                y = Integer.parseInt(coordenadas[1]);
+                strEstado = escenarioJugador.elegirCasilla(x, y);
+                respuesta = "La IA ha atacado la posicion " + x + ", " + y + "\n"
+                        + strEstado;
+            }
+            historialPosicionesAtacadas.add(x + " " + y);
+            if (strEstado.equals("TOCADO!")) {
+                posicionesAtacadasTocado.add(x + " " + y);
+                addAdyacentes(x, y, escenarioJugador);
+                ultimaPosicionTocada = "" + x + " " + y;
+                primerTocado = true;
+            } else if (strEstado.contains("HUNDIDO!")) {
+                nextPosiciones.clear();
+                rellenarPila(escenarioJugador);
+            }
+        } else {
+
+            String[] coordenadas = nextPosiciones.pop().split(" ");
+            x = Integer.parseInt(coordenadas[0]);
+            y = Integer.parseInt(coordenadas[1]);
+            strEstado = escenarioJugador.elegirCasilla(x, y);
+            respuesta = "La IA ha atacado la posicion " + x + ", " + y + "\n"
+                    + strEstado;
+            if (strEstado.equals("TOCADO!")) {
+
+                String[] ataqueAnterior = ultimaPosicionTocada.split(" ");
+                int xAtaqueAnterior = Integer.parseInt(ataqueAnterior[0]);
+                int yAtaqueAnterior = Integer.parseInt(ataqueAnterior[1]);
+
+                if (x > xAtaqueAnterior && (x + 1) < escenarioJugador.escenario.length
+                        && !escenarioJugador.yaAtacada((x + 1), y)) {
+                    nextPosiciones.clear();
+                    nextPosiciones.add((x + 1) + " " + y);
+                    if ((x - 1) > 0 && !escenarioJugador.yaAtacada((x - 1), y)) {
+                        nextPosiciones.add((x - 1) + " " + y);
+                    }
+                } else if (x < xAtaqueAnterior && (x - 1) > 0 && !escenarioJugador.yaAtacada((x - 1), y)) {
+                    nextPosiciones.clear();
+                    nextPosiciones.add((x - 1) + " " + y);
+                    if ((x + 1) < escenarioJugador.escenario.length && !escenarioJugador.yaAtacada((x - 1), y)) {
+                        nextPosiciones.add((x - 1) + " " + y);
+                    }
+                } else if (y > yAtaqueAnterior && (y + 1) < escenarioJugador.escenario.length
+                        && !escenarioJugador.yaAtacada(x, y + 1)) {
+                    nextPosiciones.clear();
+                    nextPosiciones.add(x + " " + (y + 1));
+                    if ((y - 1) > 0 && !escenarioJugador.yaAtacada(x, (y - 1))) {
+                        nextPosiciones.add(x + " " + (y - 1));
+                    }
+                } else if (y < yAtaqueAnterior && (y - 1) > 0 && !escenarioJugador.yaAtacada(x, y - 1)) {
+                    nextPosiciones.clear();
+                    nextPosiciones.add(x + " " + (y - 1));
+                    if ((y + 1) < escenarioJugador.escenario.length && !escenarioJugador.yaAtacada((x - 1), y)) {
+                        nextPosiciones.add((x - 1) + " " + y);
+                    }
+                } else if (strEstado.contains("HUNDIDO!")) {
+                    nextPosiciones.clear();
+                    rellenarPila(escenarioJugador);
+                    primerTocado = false;
+                }
+
+            }
+
+        }
+        System.out.println(nextPosiciones);
+        return respuesta;
+    }
+    
+    
     
     private void rellenarPila(Escenario escenarioJugador){
         
