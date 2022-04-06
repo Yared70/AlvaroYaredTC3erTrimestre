@@ -189,6 +189,7 @@ public class Escenario {
 
                         if (barcoHundido(barco)) {
                             respuesta += " y HUNDIDO!";
+                            barco.hundirBarco();
                         }
                         
                         return respuesta;
@@ -247,8 +248,9 @@ public class Escenario {
         int cantidadBarcos = barcos.size();
         
         for (Barco barco : barcos) {
-            if(barcoHundido(barco)){
+            if(barco.getEstado().equals(Barco.Estado.HUNDIDO)){
                 hundidos +=1;
+            } else {
             }
         }
         if(hundidos==cantidadBarcos){

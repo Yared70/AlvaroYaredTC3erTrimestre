@@ -142,9 +142,9 @@ public class FXMLDocumentController implements Initializable {
         } else {
             txaSalida.appendText(jugador.getNombre() + ": " + respuestaJugador + "\n");
             Barco barcoHundido = escenarioIA.getBarco(x, y);
+            System.out.println(barcoHundido);
             Iterator<Pair<String, Barco.Estado>> iterator = barcoHundido.getPartes().iterator();
             while (iterator.hasNext()) {
-
                 String strCoordenadas = iterator.next().getKey();
                 String[] split = strCoordenadas.split(" ");
                 Integer xHundido = (Integer.parseInt(split[0]) > 0) ? Integer.parseInt(split[0]) : null;
@@ -197,7 +197,6 @@ public class FXMLDocumentController implements Initializable {
 
             }
         }
-        
 
         if (escenarioIA.ganado()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Has ganado");

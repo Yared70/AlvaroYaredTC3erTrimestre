@@ -85,7 +85,15 @@ public class Barco {
         this.estado = estado;
     }
     
-    
+    public void hundirBarco(){
+        ArrayList<Pair<String, Estado>> partesAux = new ArrayList<>();
+        for (Pair<String, Estado> parte : partes) {
+            partesAux.add(new Pair(parte.getKey(), Estado.HUNDIDO));
+        }
+        partes.clear();
+        partes = partesAux;
+        this.estado = Estado.HUNDIDO;
+    }
     
     /**
      * Método que coloca el barco en una posicion aleatoria del tablero

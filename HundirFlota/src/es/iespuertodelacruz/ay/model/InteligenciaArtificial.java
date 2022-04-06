@@ -104,50 +104,66 @@ public class InteligenciaArtificial {
         Random rnd = new Random();
         String respuesta = "";
         String strEstado;
-        
+        int x, y;
         if(nextPosiciones.isEmpty()){
-            int x, y;
             do{
                 x = rnd.nextInt(escenarioJugador.escenario.length);
                 y = rnd.nextInt(escenarioJugador.escenario.length);
             }while(escenarioJugador.yaAtacada(x, y) || ((x+y)%2) != 0);
-            System.out.println("PAR: " + (x+y)%2);
             strEstado = escenarioJugador.elegirCasilla(x, y);
             respuesta = "La IA ha atacado la posicion " + x + ", " + y + "\n"
                 + strEstado;
-            historialPosicionesAtacadas.add(x + " " + y);
             
-            if(strEstado.equals("TOCADO!")){
-                if(x > 0 && !escenarioJugador.yaAtacada(x-1, y)){
-                    nextPosiciones.add((x-1) + " " + y);
-                }
-                if(x < escenarioJugador.escenario.length-1 && !escenarioJugador.yaAtacada(x+1, y)){
-                    nextPosiciones.add((x+1) + " " + y);
-                }
-                if(y > 0 &&!escenarioJugador.yaAtacada(x, y-1)){
-                    nextPosiciones.add(x + " " + (y-1));
-                }
-                if(y < escenarioJugador.escenario.length-1 && !escenarioJugador.yaAtacada(x, y+1)){
-                    nextPosiciones.add(x + " " + (y+1));
-                }
-            }else if(strEstado.contains("HUNDIDO!")){
-                nextPosiciones.clear();
-            }
+            
         }else{
             String[] coordenadas = nextPosiciones.pop().split(" ");
-            int x = Integer.parseInt(coordenadas[0]);
-            int y = Integer.parseInt(coordenadas[1]);
+            x = Integer.parseInt(coordenadas[0]);
+            y = Integer.parseInt(coordenadas[1]);
             strEstado = escenarioJugador.elegirCasilla(x, y);
             respuesta = "La IA ha atacado la posicion " + x + ", " + y + "\n"
                 + strEstado;
-            historialPosicionesAtacadas.add(x + " " + y);
+        }
+        historialPosicionesAtacadas.add(x + " " + y);
+        if(strEstado.equals("TOCADO!")){
+            posicionesAtacadasTocado.add(x + " " + y);
+            addAdyacentes(x, y, escenarioJugador);
+        }else if(strEstado.contains("HUNDIDO!")){
+            nextPosiciones.clear();
+            rellenarPila(escenarioJugador);
         }
         
+        System.out.println(nextPosiciones);
         return respuesta;
         
     }
     
+    private void rellenarPila(Escenario escenarioJugador){
+        
+        for (String posicionTocada : posicionesAtacadasTocado) {
+            String[] split = posicionTocada.split(" ");
+            int x = Integer.parseInt(split[0]);
+            int y = Integer.parseInt(split[1]);
+            Barco barcoTocado = escenarioJugador.getBarco(x, y);
+            if(!barcoTocado.estado.equals(Barco.Estado.HUNDIDO)){
+                addAdyacentes(x, y, escenarioJugador);
+            }
+        }
+    }
     
+    private void addAdyacentes(int x, int y, Escenario escenarioJugador){
+        if(x > 0 && !escenarioJugador.yaAtacada(x-1, y)){
+            nextPosiciones.add((x-1) + " " + y);
+        }
+        if(x < escenarioJugador.escenario.length-1 && !escenarioJugador.yaAtacada(x+1, y)){
+            nextPosiciones.add((x+1) + " " + y);
+        }
+        if(y > 0 &&!escenarioJugador.yaAtacada(x, y-1)){
+            nextPosiciones.add(x + " " + (y-1));
+        }
+        if(y < escenarioJugador.escenario.length-1 && !escenarioJugador.yaAtacada(x, y+1)){
+            nextPosiciones.add(x + " " + (y+1));
+        }
+    }
     
     
 
