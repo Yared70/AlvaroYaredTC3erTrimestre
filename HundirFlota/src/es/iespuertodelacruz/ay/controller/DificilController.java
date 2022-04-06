@@ -10,6 +10,7 @@ import es.iespuertodelacruz.ay.model.Escenario;
 import es.iespuertodelacruz.ay.model.HundirFlota;
 import es.iespuertodelacruz.ay.model.InteligenciaArtificial;
 import es.iespuertodelacruz.ay.model.Jugador;
+import java.awt.Color;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Iterator;
@@ -24,6 +25,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Paint;
 import javafx.util.Pair;
 
 /**
@@ -239,6 +241,7 @@ public class DificilController implements Initializable {
 
         }
         boton.setDisable(true);
+        boton.setOpacity(0.9);
 
         String respuestaIA = ia.atacardif3(escenarioJugador);
         System.out.println(respuestaIA);

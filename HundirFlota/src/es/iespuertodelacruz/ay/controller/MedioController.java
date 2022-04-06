@@ -228,6 +228,7 @@ public class MedioController implements Initializable {
 
         }
         boton.setDisable(true);
+        boton.setOpacity(0.90);
 
         String respuestaIA = ia.atacardif2(escenarioJugador);
         System.out.println(respuestaIA);

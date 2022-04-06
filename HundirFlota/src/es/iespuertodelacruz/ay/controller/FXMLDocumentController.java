@@ -198,6 +198,7 @@ public class FXMLDocumentController implements Initializable {
 
         }
         boton.setDisable(true);
+        boton.setOpacity(90);
 
         String respuestaIA = ia.atacardif1(escenarioJugador);
         System.out.println(respuestaIA);

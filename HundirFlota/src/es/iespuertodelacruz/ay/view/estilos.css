@@ -1,0 +1,29 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 06-abr-2022, 22:55:45
+    Author     : Álvaro Hernández Rocío
+*/
+
+AnchorPane{
+    -fx-background-image: url("fondo.jpg");
+    -fx-background-size: cover;
+}
+
+Label{
+
+    -fx-background-color: #f59746;
+    -fx-background-radius: 4px;
+    -fx-opacity: 90;
+}
+
+GridPane{
+    
+}
+
+.btnDificultad{
+    
+}
