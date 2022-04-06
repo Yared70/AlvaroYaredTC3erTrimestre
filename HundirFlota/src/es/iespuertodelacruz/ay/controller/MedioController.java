@@ -27,10 +27,11 @@ import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
 
 /**
+ * FXML Controller class
  *
- * @author Yared
+ * @author Álvaro Hernández Rocío
  */
-public class FXMLDocumentController implements Initializable {
+public class MedioController implements Initializable {
 
     @FXML
     private Label label;
@@ -64,6 +65,10 @@ public class FXMLDocumentController implements Initializable {
     private Label label21;
     @FXML
     private Label label31;
+    @FXML
+    private Label label32;
+    @FXML
+    private Label label321;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -75,51 +80,76 @@ public class FXMLDocumentController implements Initializable {
     public void iniciarNuevoJuego(){
         reiniciarGrid();
         ia = new InteligenciaArtificial(1);
-        escenarioIA = new Escenario(1, 4, ia);
+        escenarioIA = new Escenario(3, 5, ia);
         ia.setEscenario(escenarioIA);
 
         jugador = new Jugador("Jugador1");
-        escenarioJugador = new Escenario(2, 4, jugador);
+        escenarioJugador = new Escenario(4, 5, jugador);
         jugador.setEscenario(escenarioJugador);
 
         //Barcos de la IA
-        barco = new Barco(3, "A");
+        barco = new Barco(4, "A");
         do {
             barco.colocarBarco(escenarioIA);
+            System.out.println(barco);
         } while (!escenarioIA.posicionValida(barco));
+        System.out.println(barco);
 
-        Barco barco2 = new Barco(2, "B");
+        Barco barco2 = new Barco(3, "B");
         do {
             barco2.colocarBarco(escenarioIA);
         } while (!escenarioIA.posicionValida(barco2));
+        System.out.println(barco2);
 
         Barco barco3 = new Barco(2, "C");
         do {
             barco3.colocarBarco(escenarioIA);
         } while (!escenarioIA.posicionValida(barco3));
+        System.out.println(barco3);
+        
+        Barco barco4 = new Barco(2, "D");
+        do {
+            barco4.colocarBarco(escenarioIA);
+        } while (!escenarioIA.posicionValida(barco4));
+        System.out.println(barco4);
 
         //Barcos del Jugador
-        Barco barco4 = new Barco(3, "B1");
-        do {
-            barco4.colocarBarco(escenarioJugador);
-        } while (!escenarioJugador.posicionValida(barco4));
-
-        Barco barco5 = new Barco(2, "B2");
+        Barco barco5 = new Barco(4, "B1");
         do {
             barco5.colocarBarco(escenarioJugador);
+            System.out.println(barco5);
         } while (!escenarioJugador.posicionValida(barco5));
+        System.out.println(barco5);
 
-        Barco barco6 = new Barco(2, "B3");
+        Barco barco6 = new Barco(3, "B2");
         do {
             barco6.colocarBarco(escenarioJugador);
         } while (!escenarioJugador.posicionValida(barco6));
+        System.out.println(barco6);
 
-        colocarBarcoGrid(barco4);
+        Barco barco7 = new Barco(2, "B3");
+        do {
+            barco7.colocarBarco(escenarioJugador);
+        } while (!escenarioJugador.posicionValida(barco7));
+        System.out.println(barco7);
+        
+        Barco barco8 = new Barco(2, "B4");
+        do {
+            barco8.colocarBarco(escenarioJugador);
+        } while (!escenarioJugador.posicionValida(barco8));
+        System.out.println(barco8);
+
+        
         colocarBarcoGrid(barco5);
         colocarBarcoGrid(barco6);
+        colocarBarcoGrid(barco7);
+        colocarBarcoGrid(barco8);
+        
+        System.out.println(escenarioIA);
+        System.out.println(escenarioJugador);
         
         txaSalida.setText("Leyenda:\n"
-                + "Los barcos del jugador se muestran como B1, B2 y B3.\n"
+                + "Los barcos del jugador se muestran como B1, B2, B3 y B4.\n"
                 + "Cada disparo se refleja por su resultado:\n"
                 + "A: Agua\n"
                 + "T: Tocado\n"
@@ -199,7 +229,7 @@ public class FXMLDocumentController implements Initializable {
         }
         boton.setDisable(true);
 
-        String respuestaIA = ia.atacardif1(escenarioJugador);
+        String respuestaIA = ia.atacardif2(escenarioJugador);
         System.out.println(respuestaIA);
         String[] splitIA = ia.getHistorialPosicionesAtacadas().get((ia.getHistorialPosicionesAtacadas().size())-1).split(" ");
         
@@ -254,5 +284,5 @@ public class FXMLDocumentController implements Initializable {
             }
         }
     }
-
+    
 }

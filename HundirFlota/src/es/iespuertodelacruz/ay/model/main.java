@@ -31,32 +31,32 @@ public class main {
         // Creamos los 6 barcos, 3 por para cada escenario y los añadimos al escenario correspondiente
         Barco barco = new Barco(3, "A");
         do{
-            barco.colocarBarco();
+            barco.colocarBarco(escenarioIA);
         }while(!escenarioIA.posicionValida(barco));
         
         Barco barco2 = new Barco(3, "B");
         do{
-            barco2.colocarBarco();
+            barco2.colocarBarco(escenarioIA);
         }while(!escenarioIA.posicionValida(barco2));
         
         Barco barco3 = new Barco(3, "C");
         do{
-            barco3.colocarBarco();
+            barco3.colocarBarco(escenarioIA);
         }while(!escenarioIA.posicionValida(barco3));
          
         Barco barco4 = new Barco(3, "J1");
         do{
-            barco4.colocarBarco();
+            barco4.colocarBarco(escenarioJugador);
         }while(!escenarioJugador.posicionValida(barco4));
         
         Barco barco5 = new Barco(3, "J2");
         do{
-            barco5.colocarBarco();
+            barco5.colocarBarco(escenarioJugador);
         }while(!escenarioJugador.posicionValida(barco5));
         
         Barco barco6 = new Barco(3, "J3");
         do{
-            barco6.colocarBarco();
+            barco6.colocarBarco(escenarioJugador);
         }while(!escenarioJugador.posicionValida(barco6));
         
         
